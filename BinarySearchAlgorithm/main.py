@@ -22,6 +22,8 @@ def bin_sort(arr: [], target: int, start: int, end: int) -> int:
     print(start, end, mid, arr[mid])
     if target == arr[mid]:
         return mid
+    elif start == end:
+        return -1
     elif target < arr[mid]:
         return bin_sort(arr, target, start, mid-1)
     else:
@@ -30,6 +32,10 @@ def bin_sort(arr: [], target: int, start: int, end: int) -> int:
 
 if __name__ == "__main__":
     arr = [2, 3, 5, 7, 8, 10, 12, 15, 18, 20]
-    target = 7
-
-    print((bin_sort(arr, target, 0, len(arr)-1)))
+    target = 12
+    
+    x = bin_sort(arr, target, 0, len(arr)-1)
+    if x < 0:
+        print(f"{target} not found in array")
+    else:
+        print(f'{target} found at index: {x}')
